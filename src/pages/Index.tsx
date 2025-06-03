@@ -32,6 +32,8 @@ import {
   Lock,
   Headphones,
   Award,
+  User,
+  LogIn,
 } from "lucide-react";
 
 const Index = () => {
@@ -109,7 +111,7 @@ const Index = () => {
 
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center space-x-8">
-              {["Features", "Pricing", "Demo", "Support", "Download"].map(
+              {["Features", "Pricing", "Demo", "Support", "About"].map(
                 (item, index) => (
                   <motion.a
                     key={item}
@@ -133,17 +135,21 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="hidden md:flex items-center space-x-3"
             >
-              <Button
-                variant="outline"
-                className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
-              >
-                <Play className="h-4 w-4 mr-2" />
-                Watch Demo
-              </Button>
-              <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
-                <Download className="h-4 w-4 mr-2" />
-                Free Download
-              </Button>
+              <a href="https://whatsapp.webifyit.in/login">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
+                >
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Login
+                </Button>
+              </a>
+              <a href="https://whatsapp.webifyit.in/register">
+                <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
+                  <User className="h-4 w-4 mr-2" />
+                  Register
+                </Button>
+              </a>
             </motion.div>
 
             {/* Mobile Menu Button */}
@@ -164,7 +170,7 @@ const Index = () => {
               className="md:hidden mt-4 pb-4 border-t border-gray-100"
             >
               <nav className="flex flex-col space-y-3 pt-4">
-                {["Features", "Pricing", "Demo", "Support", "Download"].map(
+                {["Features", "Pricing", "Demo", "Support", "About"].map(
                   (item) => (
                     <a
                       key={item}
@@ -176,14 +182,18 @@ const Index = () => {
                   ),
                 )}
                 <div className="flex flex-col space-y-2 pt-4">
-                  <Button variant="outline" className="w-full rounded-full">
-                    <Play className="h-4 w-4 mr-2" />
-                    Watch Demo
-                  </Button>
-                  <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
-                    <Download className="h-4 w-4 mr-2" />
-                    Free Download
-                  </Button>
+                  <a href="https://whatsapp.webifyit.in/login">
+                    <Button variant="outline" className="w-full rounded-full">
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Login
+                    </Button>
+                  </a>
+                  <a href="https://whatsapp.webifyit.in/register">
+                    <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
+                      <User className="h-4 w-4 mr-2" />
+                      Register
+                    </Button>
+                  </a>
                 </div>
               </nav>
             </motion.div>
@@ -204,12 +214,12 @@ const Index = () => {
               variants={fadeInUp}
               className="flex items-center space-x-2 mb-4"
             >
-              <Badge className="bg-green-100 text-green-700 px-3 py-1">
+              <Badge className="bg-green-100 text-green-700 px-3 py-1 hover:bg-green-100">
                 <Zap className="h-3 w-3 mr-1" />
                 WhatsApp Business Automation
               </Badge>
-              <Badge className="bg-blue-100 text-blue-700 px-3 py-1">
-                Windows Desktop App
+              <Badge className="bg-blue-100 text-blue-700 px-3 py-1 hover:bg-blue-100">
+                Cloud Based Solution
               </Badge>
             </motion.div>
 
@@ -220,12 +230,6 @@ const Index = () => {
               Automate Your{" "}
               <span className="text-green-500 relative">
                 WhatsApp Marketing
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ delay: 1, duration: 1 }}
-                  className="absolute bottom-0 left-0 h-1 bg-green-400 rounded-full"
-                />
               </span>{" "}
               with MSGZONE
             </motion.h1>
@@ -239,10 +243,7 @@ const Index = () => {
               efficiency with our powerful desktop application.
             </motion.p>
 
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6"
-            >
+            <motion.div variants={fadeInUp} className="flex gap-6 py-6">
               {[
                 { icon: Users, label: "1000+ Messages/Batch", color: "green" },
                 { icon: Shield, label: "99% Uptime", color: "blue" },
@@ -263,14 +264,16 @@ const Index = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button
-                size="lg"
-                className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
-              >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Download Free Trial
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <a href="https://whatsapp.webifyit.in/">
+                <Button
+                  size="lg"
+                  className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
+                >
+                  {/* <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" /> */}
+                  Go to Dashboard
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
               <Button
                 variant="outline"
                 size="lg"
@@ -291,7 +294,7 @@ const Index = () => {
                 ))}
               </div>
               <span className="text-sm text-gray-600">
-                4.9/5 rating from 2,500+ businesses
+                4.9/5 rating from 50+ businesses
               </span>
             </motion.div>
           </motion.div>
@@ -303,19 +306,19 @@ const Index = () => {
             className="relative"
           >
             {/* Main Dashboard Mockup */}
-            <div className="relative">
+            <div>
               {/* Floating elements */}
               <motion.div
                 animate={{
                   y: [0, -20, 0],
-                  rotate: [0, 5, 0],
+                  rotate: [0, 0, 0],
                 }}
                 transition={{
                   duration: 6,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-[50px] -right-8 bg-white rounded-xl shadow-lg p-4 border border-green-100"
+                className="absolute  -bottom-40  hidden md:block -left-0 bg-white rounded-xl shadow-lg p-4 border border-green-100 max-w-64 "
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
@@ -323,7 +326,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium">Messages Sent</p>
-                    <p className="text-lg font-bold text-green-600">12,543</p>
+                    <p className="text-lg font-bold text-green-600">50.2k</p>
                   </div>
                 </div>
               </motion.div>
@@ -338,7 +341,7 @@ const Index = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-4 -left-8 bg-white rounded-xl shadow-lg p-4 border border-blue-100"
+                className="absolute -bottom-24 -left-36 hidden md:block bg-white rounded-xl shadow-lg p-4 border border-blue-100"
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -372,12 +375,12 @@ const Index = () => {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center p-3 bg-green-50 rounded-lg">
                       <Users className="h-6 w-6 text-green-600 mx-auto mb-1" />
-                      <p className="text-2xl font-bold text-gray-900">1,247</p>
+                      <p className="text-2xl font-bold text-gray-900">50</p>
                       <p className="text-sm text-gray-600">Active Users</p>
                     </div>
                     <div className="text-center p-3 bg-blue-50 rounded-lg">
                       <MessageSquare className="h-6 w-6 text-blue-600 mx-auto mb-1" />
-                      <p className="text-2xl font-bold text-gray-900">45.2K</p>
+                      <p className="text-2xl font-bold text-gray-900">3.2K</p>
                       <p className="text-sm text-gray-600">Messages Today</p>
                     </div>
                   </div>
@@ -765,10 +768,10 @@ const Index = () => {
                     {[
                       {
                         label: "Messages Sent",
-                        value: "2.3M+",
+                        value: "50.2K+",
                         color: "green",
                       },
-                      { label: "Active Users", value: "5,420", color: "blue" },
+                      { label: "Active Users", value: "50+", color: "blue" },
                       {
                         label: "Success Rate",
                         value: "98.7%",
@@ -1016,30 +1019,33 @@ const Index = () => {
               variants={fadeInUp}
               className="text-xl text-green-100 max-w-2xl mx-auto"
             >
-              Download MSGZONE now and start your free trial. No credit card
-              required, setup takes less than 5 minutes.
+              Create Account on MSGZONE now and start your free trial. No credit
+              card required, setup takes less than 5 minutes.
             </motion.p>
 
             <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
+               <a href="https://whatsapp.webifyit.in/login">
               <Button
                 size="lg"
                 className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Download for Windows
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <LogIn className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Login
               </Button>
+              </a>
+              <a href="https://whatsapp.webifyit.in/register">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-green-600 rounded-full px-8"
+                className="border-white  hover:bg-white text-green-600 rounded-full px-8"
               >
-                <Play className="mr-2 h-4 w-4" />
-                Watch Live Demo
+                <User className="mr-2 h-4 w-4" />
+                Register
               </Button>
+              </a>
             </motion.div>
 
             <motion.div
@@ -1048,9 +1054,9 @@ const Index = () => {
             >
               {[
                 {
-                  icon: Download,
-                  title: "Quick Download",
-                  description: "Get the installer and start in minutes",
+                  icon: Play,
+                  title: "Quick Start",
+                  description: "Begin using the platform in minutes",
                 },
                 {
                   icon: QrCode,
@@ -1111,7 +1117,7 @@ const Index = () => {
             {[
               {
                 title: "Product",
-                links: ["Features", "Pricing", "Download", "API", "Updates"],
+                links: ["Features", "Pricing", "About", "API", "Updates"],
               },
               {
                 title: "Support",
@@ -1167,9 +1173,6 @@ const Index = () => {
               © 2025 MSGZONE. All rights reserved. Version 1.0
             </p>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
-              <span className="text-gray-400 text-sm">
-                Windows 10+ Compatible
-              </span>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-green-400 text-sm">
