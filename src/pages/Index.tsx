@@ -315,7 +315,7 @@ const Index = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-8 -right-8 bg-white rounded-xl shadow-lg p-4 border border-green-100"
+                className="absolute -top-[50px] -right-8 bg-white rounded-xl shadow-lg p-4 border border-green-100"
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
