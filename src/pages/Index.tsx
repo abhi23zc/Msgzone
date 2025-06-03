@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowRight,
-  Check,
-  Star,
+  MessageSquare,
   Users,
   BarChart3,
-  Cloud,
-  Target,
   Shield,
   Zap,
+  Download,
+  CheckCircle,
+  Star,
+  Clock,
+  Target,
+  Smartphone,
+  Database,
+  Settings,
   FileText,
-  PieChart,
-  Monitor,
+  CreditCard,
+  Globe,
+  ArrowRight,
+  Play,
   Menu,
   X,
+  Send,
+  QrCode,
+  Upload,
+  Calendar,
+  TrendingUp,
+  Lock,
+  Headphones,
+  Award,
 } from "lucide-react";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("admin");
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
@@ -55,40 +69,56 @@ const Index = () => {
     },
   };
 
+  const slideIn = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
       {/* Header */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100"
+        className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100 shadow-sm"
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-3"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                <MessageSquare className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">Biccas</span>
+              <div>
+                <span className="text-2xl font-bold text-gray-900">
+                  MSGZONE
+                </span>
+                <p className="text-xs text-green-600 font-medium">
+                  WhatsApp Automation
+                </p>
+              </div>
             </motion.div>
 
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center space-x-8">
-              {["Home", "Product", "FAQ", "Blog", "About Us"].map(
+              {["Features", "Pricing", "Demo", "Support", "Download"].map(
                 (item, index) => (
                   <motion.a
                     key={item}
-                    href="#"
+                    href={`#${item.toLowerCase()}`}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 + 0.3 }}
                     whileHover={{ y: -2 }}
-                    className="text-gray-600 hover:text-emerald-600 transition-colors"
+                    className="text-gray-600 hover:text-green-600 transition-colors font-medium"
                   >
                     {item}
                   </motion.a>
@@ -101,16 +131,24 @@ const Index = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:block"
+              className="hidden md:flex items-center space-x-3"
             >
-              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-6">
-                Sign Up
+              <Button
+                variant="outline"
+                className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
+              >
+                <Play className="h-4 w-4 mr-2" />
+                Watch Demo
+              </Button>
+              <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
+                <Download className="h-4 w-4 mr-2" />
+                Free Download
               </Button>
             </motion.div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -126,18 +164,27 @@ const Index = () => {
               className="md:hidden mt-4 pb-4 border-t border-gray-100"
             >
               <nav className="flex flex-col space-y-3 pt-4">
-                {["Home", "Product", "FAQ", "Blog", "About Us"].map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="text-gray-600 hover:text-emerald-600 transition-colors"
-                  >
-                    {item}
-                  </a>
-                ))}
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-full mt-4">
-                  Sign Up
-                </Button>
+                {["Features", "Pricing", "Demo", "Support", "Download"].map(
+                  (item) => (
+                    <a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
+                      className="text-gray-600 hover:text-green-600 transition-colors"
+                    >
+                      {item}
+                    </a>
+                  ),
+                )}
+                <div className="flex flex-col space-y-2 pt-4">
+                  <Button variant="outline" className="w-full rounded-full">
+                    <Play className="h-4 w-4 mr-2" />
+                    Watch Demo
+                  </Button>
+                  <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
+                    <Download className="h-4 w-4 mr-2" />
+                    Free Download
+                  </Button>
+                </div>
               </nav>
             </motion.div>
           )}
@@ -153,23 +200,64 @@ const Index = () => {
             variants={staggerContainer}
             className="space-y-8"
           >
+            <motion.div
+              variants={fadeInUp}
+              className="flex items-center space-x-2 mb-4"
+            >
+              <Badge className="bg-green-100 text-green-700 px-3 py-1">
+                <Zap className="h-3 w-3 mr-1" />
+                WhatsApp Business Automation
+              </Badge>
+              <Badge className="bg-blue-100 text-blue-700 px-3 py-1">
+                Windows Desktop App
+              </Badge>
+            </motion.div>
+
             <motion.h1
               variants={fadeInUp}
               className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight"
             >
-              We're here to{" "}
-              <span className="text-emerald-500">Increase your</span>{" "}
-              Productivity
+              Automate Your{" "}
+              <span className="text-green-500 relative">
+                WhatsApp Marketing
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 1, duration: 1 }}
+                  className="absolute bottom-0 left-0 h-1 bg-green-400 rounded-full"
+                />
+              </span>{" "}
+              with MSGZONE
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="text-lg text-gray-600 max-w-md"
+              className="text-xl text-gray-600 max-w-lg"
             >
-              Let's make your work more organized and easily using the Todos
-              Dashboard with many of the latest features that help you complete
-              tasks every day.
+              Professional WhatsApp Web automation software for businesses. Send
+              bulk messages, manage customers, and boost your marketing
+              efficiency with our powerful desktop application.
             </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6"
+            >
+              {[
+                { icon: Users, label: "1000+ Messages/Batch", color: "green" },
+                { icon: Shield, label: "99% Uptime", color: "blue" },
+                { icon: Zap, label: "Instant Delivery", color: "purple" },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <div className={`p-2 rounded-lg bg-${item.color}-100`}>
+                    <item.icon className={`h-4 w-4 text-${item.color}-600`} />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
 
             <motion.div
               variants={fadeInUp}
@@ -177,18 +265,34 @@ const Index = () => {
             >
               <Button
                 size="lg"
-                className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-8 group"
+                className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
               >
-                Try free trial
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Download Free Trial
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full px-8 hover:bg-emerald-50 hover:border-emerald-300"
+                className="rounded-full px-8 border-green-200 text-green-700 hover:bg-green-50"
               >
-                View Demo
+                <Play className="mr-2 h-4 w-4" />
+                Watch Demo
               </Button>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex items-center space-x-4 pt-4"
+            >
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <span className="text-sm text-gray-600">
+                4.9/5 rating from 2,500+ businesses
+              </span>
             </motion.div>
           </motion.div>
 
@@ -198,22 +302,9 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            {/* Dashboard Mockup */}
+            {/* Main Dashboard Mockup */}
             <div className="relative">
-              {/* Background decorative elements */}
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl opacity-80"
-              />
-
+              {/* Floating elements */}
               <motion.div
                 animate={{
                   y: [0, -20, 0],
@@ -224,622 +315,769 @@ const Index = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl opacity-80"
-              />
+                className="absolute -top-8 -right-8 bg-white rounded-xl shadow-lg p-4 border border-green-100"
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <Send className="h-4 w-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Messages Sent</p>
+                    <p className="text-lg font-bold text-green-600">12,543</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  y: [0, 15, 0],
+                  x: [0, 10, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -bottom-4 -left-8 bg-white rounded-xl shadow-lg p-4 border border-blue-100"
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <BarChart3 className="h-4 w-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Success Rate</p>
+                    <p className="text-lg font-bold text-blue-600">98.7%</p>
+                  </div>
+                </div>
+              </motion.div>
 
               {/* Main dashboard card */}
-              <Card className="bg-white/90 backdrop-blur-sm border-emerald-100 shadow-2xl">
-                <CardContent className="p-6">
-                  {/* Dashboard header */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
-                        <BarChart3 className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">
-                          Analytics
-                        </h3>
-                        <p className="text-sm text-gray-500">$845.00</p>
-                      </div>
+              <Card className="bg-white/95 backdrop-blur-sm border-green-100 shadow-2xl overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white flex items-center">
+                        <MessageSquare className="h-5 w-5 mr-2" />
+                        MSGZONE Dashboard
+                      </CardTitle>
+                      <p className="text-green-100 text-sm">
+                        WhatsApp Automation Control
+                      </p>
                     </div>
-                    <Badge className="bg-emerald-100 text-emerald-700">
-                      +5.7%
-                    </Badge>
+                    <Badge className="bg-white/20 text-white">Live</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  {/* Mini dashboard content */}
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center p-3 bg-green-50 rounded-lg">
+                      <Users className="h-6 w-6 text-green-600 mx-auto mb-1" />
+                      <p className="text-2xl font-bold text-gray-900">1,247</p>
+                      <p className="text-sm text-gray-600">Active Users</p>
+                    </div>
+                    <div className="text-center p-3 bg-blue-50 rounded-lg">
+                      <MessageSquare className="h-6 w-6 text-blue-600 mx-auto mb-1" />
+                      <p className="text-2xl font-bold text-gray-900">45.2K</p>
+                      <p className="text-sm text-gray-600">Messages Today</p>
+                    </div>
                   </div>
 
-                  {/* Chart area */}
-                  <div className="h-32 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg mb-4 flex items-end justify-around p-4">
-                    {[40, 65, 45, 80, 55, 90, 70].map((height, index) => (
+                  {/* Chart representation */}
+                  <div className="h-32 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg flex items-end justify-around p-4">
+                    {[60, 85, 45, 90, 75, 95, 80].map((height, index) => (
                       <motion.div
                         key={index}
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
-                        transition={{ delay: index * 0.1 + 1, duration: 0.6 }}
-                        className="bg-gradient-to-t from-emerald-500 to-emerald-400 rounded-t w-4"
+                        transition={{ delay: index * 0.1 + 1.5, duration: 0.6 }}
+                        className="bg-gradient-to-t from-green-500 to-green-400 rounded-t w-6"
                       />
                     ))}
                   </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-gray-900">5,420</p>
-                      <p className="text-sm text-gray-500">Tasks Done</p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-sm text-gray-600">
+                        Real-time sync
+                      </span>
                     </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-gray-900">97%</p>
-                      <p className="text-sm text-gray-500">Success Rate</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Floating task card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-                className="absolute -right-8 top-8 bg-white rounded-lg shadow-lg p-4 w-48"
-              >
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 text-sm">
-                      Project Alpha
-                    </h4>
-                    <p className="text-xs text-gray-500">Due today</p>
-                  </div>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "75%" }}
-                    transition={{ delay: 2, duration: 1 }}
-                    className="bg-blue-500 h-2 rounded-full"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="container mx-auto px-4 py-16"
-      >
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            More than 25,000 teams use Collabs
-          </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {["Unsplash", "Notion", "INTERCOM", "descript", "grammarly"].map(
-              (brand, index) => (
-                <motion.div
-                  key={brand}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.6, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-xl font-semibold text-gray-500"
-                >
-                  {brand}
-                </motion.div>
-              ),
-            )}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="space-y-8"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl lg:text-4xl font-bold text-gray-900"
-            >
-              How we support our pratner all over the world
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-gray-600 text-lg">
-              SaaS become a common delivery model for many business application,
-              including office software, messaging software, payroll processing
-              software, DBMS software, management software
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-6">
-              <div className="flex items-center space-x-2">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-600">4.9 Rating</span>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-gray-900">4.9 Rating</p>
-                <p className="text-sm text-gray-500">Databricks</p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="space-y-6"
-          >
-            {[
-              {
-                icon: FileText,
-                title: "Publishing",
-                description:
-                  "Plan, collaborate, and share with the team from anywhere.",
-                color: "emerald",
-              },
-              {
-                icon: BarChart3,
-                title: "Analytics",
-                description:
-                  "Analyze and track performance and trends for optimization.",
-                color: "blue",
-              },
-              {
-                icon: Users,
-                title: "Engagement",
-                description:
-                  "Building community and customer engagement across the world.",
-                color: "purple",
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                variants={fadeInUp}
-                whileHover={{ x: 10 }}
-                className="flex items-start space-x-4 p-4 rounded-lg hover:bg-white/50 transition-colors"
-              >
-                <div className={`p-2 rounded-lg bg-${feature.color}-100`}>
-                  <feature.icon
-                    className={`h-6 w-6 text-${feature.color}-600`}
-                  />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="text-center mb-16"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-          >
-            Our Features you cab get
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-gray-600 max-w-2xl mx-auto"
-          >
-            We offer a variety of interesting features that you can help
-            increase yor productivity at work and manage your projrct easily
-          </motion.p>
-          <motion.div variants={fadeInUp} className="mt-8">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-8">
-              Get Started
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {[
-            {
-              icon: Users,
-              title: "Collaboration Teams",
-              description:
-                "Here you can handle projects together with team virtually",
-            },
-            {
-              icon: Cloud,
-              title: "Cloud Storage",
-              description:
-                "No nedd to worry about storage because we provide storage up to 2TB",
-            },
-            {
-              icon: PieChart,
-              title: "Daily Analytics",
-              description:
-                "We always provide useful informatin to make it easier for you every day",
-            },
-          ].map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              variants={scaleIn}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="text-center group"
-            >
-              <Card className="p-8 h-full border-gray-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
-                <CardContent className="space-y-4">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto group-hover:bg-emerald-200 transition-colors">
-                    <feature.icon className="h-8 w-8 text-emerald-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="space-y-8"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl lg:text-4xl font-bold text-gray-900"
-            >
-              What Benefit Will You Get
-            </motion.h2>
-
-            <motion.div variants={staggerContainer} className="space-y-4">
-              {[
-                "Free Consulting With Experet Saving Money",
-                "Online Banking",
-                "Investment Report Every Month",
-                "Saving Money For The Future",
-                "Online Transection",
-              ].map((benefit, index) => (
-                <motion.div
-                  key={benefit}
-                  variants={fadeInUp}
-                  className="flex items-center space-x-3"
-                >
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="h-4 w-4 text-white" />
-                  </div>
-                  <span className="text-gray-700">{benefit}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <Card className="bg-white shadow-2xl overflow-hidden">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Monitor className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    Money Transfer Successful
-                  </h3>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-600">Transaction ID</span>
-                    <span className="font-mono text-sm">#TXN-001</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-600">Amount</span>
-                    <span className="font-semibold text-green-600">
-                      $2,500.00
+                    <span className="text-sm text-green-600 font-medium">
+                      All systems operational
                     </span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-600">Status</span>
-                    <Badge className="bg-green-100 text-green-700">
-                      Completed
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="container mx-auto px-4 py-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="text-center mb-16"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-          >
-            Choose Plan That's Right For You
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-gray-600 max-w-2xl mx-auto mb-8"
-          >
-            Choose plan that works best for you, feel free to contact us
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="flex justify-center mb-8">
-            <div className="bg-gray-100 p-1 rounded-full">
-              <div className="flex">
-                <button className="px-6 py-2 rounded-full bg-white shadow-sm font-medium">
-                  Bil Monthly
-                </button>
-                <button className="px-6 py-2 rounded-full text-gray-600">
-                  Bil Yearly
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
-        >
-          {[
-            {
-              name: "Free",
-              price: "0",
-              features: [
-                "3 Users",
-                "All UI components",
-                "Lifetime access",
-                "Use on 1 project",
-                "3 Months support",
-              ],
-              popular: false,
-            },
-            {
-              name: "Pro",
-              price: "9",
-              features: [
-                "5 Users",
-                "All UI components",
-                "Lifetime access",
-                "Unlimited projects",
-                "Features and collaborations",
-                "All incoming premium",
-                "1 Year support",
-              ],
-              popular: true,
-            },
-            {
-              name: "Business",
-              price: "16",
-              features: [
-                "All the features of pro plan",
-                "Account success Manager",
-                "Single sign-On (SSO)",
-                "Co-conception program",
-                "Collaboration",
-              ],
-              popular: false,
-            },
-          ].map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="relative"
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-emerald-500 text-white px-4 py-1">
-                    Most Popular
-                  </Badge>
-                </div>
-              )}
-
-              <Card
-                className={`p-8 text-center h-full ${
-                  plan.popular
-                    ? "bg-emerald-500 text-white border-emerald-500 shadow-2xl"
-                    : "bg-white border-gray-200 hover:border-emerald-200"
-                } transition-all duration-300`}
-              >
-                <CardContent className="space-y-6">
-                  <div>
-                    <h3
-                      className={`text-xl font-semibold mb-2 ${
-                        plan.popular ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {plan.name}
-                    </h3>
-                    <div className="mb-4">
-                      <span
-                        className={`text-4xl font-bold ${
-                          plan.popular ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        ${plan.price}
-                      </span>
-                      <span
-                        className={`text-sm ${
-                          plan.popular ? "text-emerald-100" : "text-gray-500"
-                        }`}
-                      >
-                        /month
-                      </span>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center justify-center space-x-2"
-                      >
-                        <Check
-                          className={`h-4 w-4 ${
-                            plan.popular
-                              ? "text-emerald-200"
-                              : "text-emerald-500"
-                          }`}
-                        />
-                        <span
-                          className={`text-sm ${
-                            plan.popular ? "text-emerald-100" : "text-gray-600"
-                          }`}
-                        >
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    className={`w-full rounded-full ${
-                      plan.popular
-                        ? "bg-white text-emerald-500 hover:bg-gray-50"
-                        : "bg-emerald-500 text-white hover:bg-emerald-600"
-                    }`}
-                  >
-                    {plan.popular ? "Get Pro" : `Get ${plan.name}`}
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-gray-900 text-white py-16">
+      {/* Features Overview */}
+      <section id="features" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid lg:grid-cols-2 gap-16 items-center"
+            className="text-center mb-16"
           >
-            <motion.div variants={fadeInUp} className="space-y-8">
-              <div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                  People are Saying About DoWhith
-                </h2>
-                <p className="text-gray-300 text-lg">
-                  Everything you need to accept to payment and grow your money
-                  of manage anywhere on planet
-                </p>
-              </div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
+            >
+              Powerful Features for{" "}
+              <span className="text-green-500">WhatsApp Automation</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            >
+              MSGZONE provides comprehensive tools for businesses to automate
+              WhatsApp marketing, manage customers, and scale their
+              communication efficiently.
+            </motion.p>
+          </motion.div>
 
-              <div className="space-y-6">
-                <blockquote className="text-lg italic">
-                  "I am very helped by this E-wallet application , my days are
-                  very easy to use this application and its very helpful in my
-                  life , even I can pay a short time 😍"
-                </blockquote>
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="flex -space-x-2">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-10 h-10 bg-emerald-500 rounded-full border-2 border-gray-900 flex items-center justify-center"
+          {/* Tab Navigation */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="flex justify-center mb-12"
+          >
+            <div className="bg-gray-100 p-1 rounded-full">
+              <div className="flex">
+                <button
+                  onClick={() => setActiveTab("admin")}
+                  className={`px-8 py-3 rounded-full font-medium transition-all ${
+                    activeTab === "admin"
+                      ? "bg-white shadow-md text-green-600"
+                      : "text-gray-600 hover:text-green-600"
+                  }`}
+                >
+                  Admin Panel
+                </button>
+                <button
+                  onClick={() => setActiveTab("user")}
+                  className={`px-8 py-3 rounded-full font-medium transition-all ${
+                    activeTab === "user"
+                      ? "bg-white shadow-md text-green-600"
+                      : "text-gray-600 hover:text-green-600"
+                  }`}
+                >
+                  User Panel
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Features Grid */}
+          <motion.div
+            key={activeTab}
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {activeTab === "admin"
+              ? [
+                  {
+                    icon: BarChart3,
+                    title: "Advanced Dashboard",
+                    description:
+                      "Monitor WhatsApp connections, view user activity, track messages sent and payments with beautiful analytics.",
+                    color: "green",
+                    features: [
+                      "Real-time monitoring",
+                      "Activity overview (7 days)",
+                      "Graphical reports",
+                    ],
+                  },
+                  {
+                    icon: Users,
+                    title: "User Management",
+                    description:
+                      "Complete user control with detailed profiles, status tracking, and administrative actions.",
+                    color: "blue",
+                    features: [
+                      "Add/edit users",
+                      "Active/inactive filtering",
+                      "User status management",
+                    ],
+                  },
+                  {
+                    icon: FileText,
+                    title: "Comprehensive Reports",
+                    description:
+                      "Detailed reporting for message delivery, scheduled messages, and plan sales with export options.",
+                    color: "purple",
+                    features: [
+                      "Delivery reports",
+                      "Scheduled message tracking",
+                      "Sales analytics",
+                    ],
+                  },
+                  {
+                    icon: Settings,
+                    title: "Plan Management",
+                    description:
+                      "Create and modify subscription plans with flexible pricing models and multi-device support.",
+                    color: "orange",
+                    features: [
+                      "Day-wise plans",
+                      "Message count limits",
+                      "Multi-device options",
+                    ],
+                  },
+                  {
+                    icon: CreditCard,
+                    title: "Payment Integration",
+                    description:
+                      "Seamless payment gateway integration for processing user subscriptions and plan purchases.",
+                    color: "indigo",
+                    features: [
+                      "Multiple gateways",
+                      "Automatic billing",
+                      "Payment tracking",
+                    ],
+                  },
+                  {
+                    icon: Send,
+                    title: "Promotional Tools",
+                    description:
+                      "Send promotional campaigns to bulk WhatsApp numbers with attachments and scheduling.",
+                    color: "pink",
+                    features: [
+                      "Bulk messaging",
+                      "File attachments",
+                      "Message scheduling",
+                    ],
+                  },
+                ]
+              : [
+                  {
+                    icon: QrCode,
+                    title: "Easy Login System",
+                    description:
+                      "Quick login via QR code scanning or registered WhatsApp number for seamless access.",
+                    color: "green",
+                    features: [
+                      "QR code login",
+                      "Number verification",
+                      "Secure authentication",
+                    ],
+                  },
+                  {
+                    icon: MessageSquare,
+                    title: "Bulk Messaging",
+                    description:
+                      "Send messages to thousands of customers with Excel import, media attachments, and templates.",
+                    color: "blue",
+                    features: [
+                      "Excel import",
+                      "Media attachments",
+                      "Message templates",
+                    ],
+                  },
+                  {
+                    icon: BarChart3,
+                    title: "Message Reports",
+                    description:
+                      "Track message status with detailed reports, filters, and export options in Excel/PDF format.",
+                    color: "purple",
+                    features: [
+                      "Status tracking",
+                      "Date filters",
+                      "Export reports",
+                    ],
+                  },
+                  {
+                    icon: Calendar,
+                    title: "Smart Scheduling",
+                    description:
+                      "Schedule messages for optimal delivery times and manage your communication timeline.",
+                    color: "orange",
+                    features: [
+                      "Time scheduling",
+                      "Batch processing",
+                      "Delivery optimization",
+                    ],
+                  },
+                  {
+                    icon: Globe,
+                    title: "Developer API",
+                    description:
+                      "Generate API keys for external integrations and access WhatsApp API parameters.",
+                    color: "indigo",
+                    features: [
+                      "API key generation",
+                      "External integration",
+                      "Custom development",
+                    ],
+                  },
+                  {
+                    icon: Target,
+                    title: "Template Management",
+                    description:
+                      "Access admin-approved message templates and create effective marketing campaigns.",
+                    color: "pink",
+                    features: [
+                      "Pre-approved templates",
+                      "Campaign management",
+                      "Custom templates",
+                    ],
+                  },
+                ].map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    variants={scaleIn}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="group"
+                  >
+                    <Card className="h-full border-gray-100 hover:border-green-200 hover:shadow-xl transition-all duration-300">
+                      <CardContent className="p-8">
+                        <div
+                          className={`w-14 h-14 bg-${feature.color}-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${feature.color}-200 transition-colors`}
+                        >
+                          <feature.icon
+                            className={`h-7 w-7 text-${feature.color}-600`}
+                          />
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                          {feature.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4">
+                          {feature.description}
+                        </p>
+                        <ul className="space-y-2">
+                          {feature.features.map((item, i) => (
+                            <li
+                              key={i}
+                              className="flex items-center text-sm text-gray-500"
+                            >
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="space-y-8"
+            >
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl lg:text-4xl font-bold text-gray-900"
+              >
+                Why Choose <span className="text-green-500">MSGZONE</span>?
+              </motion.h2>
+
+              <motion.p variants={fadeInUp} className="text-xl text-gray-600">
+                Professional WhatsApp automation designed for businesses that
+                need reliable, scalable, and secure messaging solutions.
+              </motion.p>
+
+              <motion.div variants={staggerContainer} className="space-y-6">
+                {[
+                  {
+                    icon: Shield,
+                    title: "99% Uptime Reliability",
+                    description:
+                      "Enterprise-grade reliability ensures your business communication never stops.",
+                  },
+                  {
+                    icon: Zap,
+                    title: "High Performance",
+                    description:
+                      "Process and send messages to 1000+ users per batch with minimal delay.",
+                  },
+                  {
+                    icon: Lock,
+                    title: "Data Security",
+                    description:
+                      "All user data, WhatsApp numbers, and payment details are securely encrypted.",
+                  },
+                  {
+                    icon: Headphones,
+                    title: "24/7 Support",
+                    description:
+                      "Professional support team ready to help you maximize your automation potential.",
+                  },
+                ].map((benefit, index) => (
+                  <motion.div
+                    key={benefit.title}
+                    variants={slideIn}
+                    className="flex items-start space-x-4"
+                  >
+                    <div className="p-3 bg-green-100 rounded-xl">
+                      <benefit.icon className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-600">{benefit.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <Card className="bg-white shadow-2xl overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-8">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white text-2xl">
+                        Performance Stats
+                      </CardTitle>
+                      <p className="text-green-100">Real-time system metrics</p>
+                    </div>
+                    <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                      <TrendingUp className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-8">
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      {
+                        label: "Messages Sent",
+                        value: "2.3M+",
+                        color: "green",
+                      },
+                      { label: "Active Users", value: "5,420", color: "blue" },
+                      {
+                        label: "Success Rate",
+                        value: "98.7%",
+                        color: "purple",
+                      },
+                      { label: "Uptime", value: "99.9%", color: "orange" },
+                    ].map((stat, index) => (
+                      <motion.div
+                        key={stat.label}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="text-center"
                       >
-                        <span className="text-sm font-semibold">U</span>
-                      </div>
+                        <p
+                          className={`text-3xl font-bold text-${stat.color}-600 mb-1`}
+                        >
+                          {stat.value}
+                        </p>
+                        <p className="text-sm text-gray-600">{stat.label}</p>
+                      </motion.div>
                     ))}
                   </div>
-                  <div>
-                    <p className="font-semibold">Arvid Norberg</p>
-                    <p className="text-gray-400 text-sm">CEO at Company</p>
+
+                  <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-700">
+                        System Performance
+                      </span>
+                      <span className="text-sm text-green-600 font-semibold">
+                        Excellent
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "97%" }}
+                        transition={{ delay: 1, duration: 1.5 }}
+                        className="bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full"
+                      />
+                    </div>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Choose Your <span className="text-green-500">Plan</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-gray-600 max-w-2xl mx-auto"
+            >
+              Flexible pricing plans designed for businesses of all sizes. Start
+              with our free trial and scale as you grow.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          >
+            {[
+              {
+                name: "Starter",
+                price: "Free",
+                period: "trial",
+                description: "Perfect for testing and small businesses",
+                features: [
+                  "100 messages/day",
+                  "1 WhatsApp number",
+                  "Basic templates",
+                  "Email support",
+                  "7-day trial",
+                ],
+                popular: false,
+                cta: "Start Free Trial",
+              },
+              {
+                name: "Professional",
+                price: "$49",
+                period: "month",
+                description: "Ideal for growing businesses",
+                features: [
+                  "10,000 messages/day",
+                  "5 WhatsApp numbers",
+                  "Advanced templates",
+                  "Priority support",
+                  "Analytics dashboard",
+                  "Bulk import",
+                  "Scheduling",
+                ],
+                popular: true,
+                cta: "Get Professional",
+              },
+              {
+                name: "Enterprise",
+                price: "$149",
+                period: "month",
+                description: "For large organizations",
+                features: [
+                  "Unlimited messages",
+                  "Unlimited numbers",
+                  "Custom templates",
+                  "24/7 phone support",
+                  "Advanced analytics",
+                  "API access",
+                  "Multi-user management",
+                  "Custom integrations",
+                ],
+                popular: false,
+                cta: "Contact Sales",
+              },
+            ].map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                variants={scaleIn}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="relative"
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-green-500 text-white px-4 py-1">
+                      Most Popular
+                    </Badge>
+                  </div>
+                )}
+
+                <Card
+                  className={`h-full text-center ${
+                    plan.popular
+                      ? "border-green-200 shadow-xl ring-2 ring-green-500 ring-opacity-20"
+                      : "border-gray-200 hover:border-green-200"
+                  } transition-all duration-300`}
+                >
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {plan.name}
+                    </h3>
+                    <p className="text-gray-600 mb-6">{plan.description}</p>
+
+                    <div className="mb-8">
+                      <span className="text-4xl font-bold text-gray-900">
+                        {plan.price}
+                      </span>
+                      {plan.period && (
+                        <span className="text-gray-500">/{plan.period}</span>
+                      )}
+                    </div>
+
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center">
+                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      className={`w-full rounded-full ${
+                        plan.popular
+                          ? "bg-green-500 hover:bg-green-600 text-white"
+                          : "bg-gray-100 hover:bg-green-50 text-gray-900 hover:text-green-700"
+                      }`}
+                    >
+                      {plan.cta}
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mt-12"
+          >
+            <p className="text-gray-600 mb-4">
+              All plans include free updates, security patches, and basic
+              support
+            </p>
+            <div className="flex justify-center items-center space-x-8 text-sm text-gray-500">
+              <div className="flex items-center">
+                <Shield className="h-4 w-4 mr-1" />
+                30-day money back
               </div>
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-1" />
+                Cancel anytime
+              </div>
+              <div className="flex items-center">
+                <Award className="h-4 w-4 mr-1" />
+                No setup fees
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Download CTA Section */}
+      <section
+        id="download"
+        className="py-16 bg-gradient-to-r from-green-500 to-emerald-600"
+      >
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-4xl mx-auto space-y-8"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl lg:text-5xl font-bold text-white"
+            >
+              Ready to Automate Your{" "}
+              <span className="text-green-200">WhatsApp Marketing</span>?
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-green-100 max-w-2xl mx-auto"
+            >
+              Download MSGZONE now and start your free trial. No credit card
+              required, setup takes less than 5 minutes.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <Button
+                size="lg"
+                className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
+              >
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Download for Windows
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-green-600 rounded-full px-8"
+              >
+                <Play className="mr-2 h-4 w-4" />
+                Watch Live Demo
+              </Button>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              className="bg-gray-800 rounded-2xl p-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12"
             >
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center">
-                      <Zap className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Get Started</h3>
-                      <p className="text-gray-400 text-sm">
-                        Join our community
-                      </p>
-                    </div>
+              {[
+                {
+                  icon: Download,
+                  title: "Quick Download",
+                  description: "Get the installer and start in minutes",
+                },
+                {
+                  icon: QrCode,
+                  title: "Easy Setup",
+                  description: "Connect your WhatsApp with QR scan",
+                },
+                {
+                  icon: MessageSquare,
+                  title: "Start Messaging",
+                  description: "Begin your automation journey",
+                },
+              ].map((step, index) => (
+                <motion.div
+                  key={step.title}
+                  variants={scaleIn}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <step.icon className="h-8 w-8 text-white" />
                   </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Input
-                    placeholder="Enter your email"
-                    className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                  />
-                  <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg">
-                    Subscribe Now
-                  </Button>
-                </div>
-              </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-green-100">{step.description}</p>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -856,48 +1094,45 @@ const Index = () => {
             className="grid md:grid-cols-4 gap-8"
           >
             <motion.div variants={fadeInUp} className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">B</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                  <MessageSquare className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">Biccas</span>
+                <div>
+                  <span className="text-2xl font-bold">MSGZONE</span>
+                  <p className="text-green-400 text-sm">WhatsApp Automation</p>
+                </div>
               </div>
-              <p className="text-gray-400">
-                Get started now increase your productivity
+              <p className="text-gray-400 max-w-sm">
+                Professional WhatsApp automation software for businesses.
+                Automate your marketing and boost customer engagement.
               </p>
-              <div className="flex space-x-4">
-                <Input
-                  placeholder="Enter your email"
-                  className="bg-gray-800 border-gray-700 text-white"
-                />
-                <Button className="bg-emerald-500 hover:bg-emerald-600">
-                  →
-                </Button>
-              </div>
             </motion.div>
 
             {[
               {
+                title: "Product",
+                links: ["Features", "Pricing", "Download", "API", "Updates"],
+              },
+              {
                 title: "Support",
                 links: [
-                  "Help centre",
-                  "Account information",
-                  "About",
-                  "Contact us",
+                  "Help Center",
+                  "Documentation",
+                  "Contact Us",
+                  "Training",
+                  "Community",
                 ],
               },
               {
-                title: "Help and Solution",
+                title: "Company",
                 links: [
-                  "Talk to support",
-                  "Support docs",
-                  "System status",
-                  "Covid responds",
+                  "About Us",
+                  "Privacy Policy",
+                  "Terms of Service",
+                  "Careers",
+                  "Partners",
                 ],
-              },
-              {
-                title: "Product",
-                links: ["Update", "Security", "Beta test", "Pricing product"],
               },
             ].map((section, index) => (
               <motion.div
@@ -905,7 +1140,7 @@ const Index = () => {
                 variants={fadeInUp}
                 className="space-y-4"
               >
-                <h3 className="font-semibold">{section.title}</h3>
+                <h3 className="text-lg font-semibold">{section.title}</h3>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
                     <li key={link}>
@@ -930,15 +1165,18 @@ const Index = () => {
             className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
             <p className="text-gray-400 text-sm">
-              © 2022 Biccas Inc. Copyright and rights reserved
+              © 2025 MSGZONE. All rights reserved. Version 1.0
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm">
-                Terms and Condition
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm">
-                Privacy Policy
-              </a>
+            <div className="flex items-center space-x-6 mt-4 md:mt-0">
+              <span className="text-gray-400 text-sm">
+                Windows 10+ Compatible
+              </span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-400 text-sm">
+                  All systems operational
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>
