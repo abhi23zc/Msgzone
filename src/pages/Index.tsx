@@ -240,7 +240,7 @@ const Index = () => {
             >
               Professional WhatsApp Web automation software for businesses. Send
               bulk messages, manage customers, and boost your marketing
-              efficiency with our powerful desktop application.
+              efficiency with our powerful web application.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex gap-6 py-6">
