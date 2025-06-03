@@ -482,7 +482,7 @@ const Index = () => {
             variants={staggerContainer}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {activeTab === "admin"
+            {(activeTab === "admin"
               ? [
                   {
                     icon: BarChart3,
@@ -630,43 +630,42 @@ const Index = () => {
                       "Custom templates",
                     ],
                   },
-                ].map((feature, index) => (
-                  <motion.div
-                    key={feature.title}
-                    variants={scaleIn}
-                    whileHover={{ y: -5, scale: 1.02 }}
-                    className="group"
-                  >
-                    <Card className="h-full border-gray-100 hover:border-green-200 hover:shadow-xl transition-all duration-300">
-                      <CardContent className="p-8">
-                        <div
-                          className={`w-14 h-14 bg-${feature.color}-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${feature.color}-200 transition-colors`}
+                ]
+            ).map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                variants={scaleIn}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full border-gray-100 hover:border-green-200 hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div
+                      className={`w-14 h-14 bg-${feature.color}-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${feature.color}-200 transition-colors`}
+                    >
+                      <feature.icon
+                        className={`h-7 w-7 text-${feature.color}-600`}
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4">{feature.description}</p>
+                    <ul className="space-y-2">
+                      {feature.features.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center text-sm text-gray-500"
                         >
-                          <feature.icon
-                            className={`h-7 w-7 text-${feature.color}-600`}
-                          />
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4">
-                          {feature.description}
-                        </p>
-                        <ul className="space-y-2">
-                          {feature.features.map((item, i) => (
-                            <li
-                              key={i}
-                              className="flex items-center text-sm text-gray-500"
-                            >
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
