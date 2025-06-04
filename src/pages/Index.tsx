@@ -816,7 +816,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 bg-white">
+      {/* <section id="pricing" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -986,7 +986,7 @@ const Index = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Download CTA Section */}
       <section
