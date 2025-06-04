@@ -84,9 +84,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
       {/* Header */}
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+       
         className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100 shadow-sm"
       >
         <div className="container mx-auto px-4 py-4">
@@ -116,9 +114,7 @@ const Index = () => {
                   <motion.a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
+                   
                     whileHover={{ y: -2 }}
                     className="text-gray-600 hover:text-green-600 transition-colors font-medium"
                   >
@@ -164,9 +160,7 @@ const Index = () => {
           {/* Mobile Menu */}
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              
               className="md:hidden mt-4 pb-4 border-t border-gray-100"
             >
               <nav className="flex flex-col space-y-3 pt-4">
@@ -202,7 +196,7 @@ const Index = () => {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 lg:py-24">
+      <section className="container mx-auto px-4 py-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial="hidden"
