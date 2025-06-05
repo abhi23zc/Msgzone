@@ -38,7 +38,7 @@ import {
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("admin");
+  const [activeTab, setActiveTab] = useState("user");
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
@@ -414,21 +414,17 @@ const Index = () => {
       <section id="features" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
             className="text-center mb-16"
           >
             <motion.h2
-              variants={fadeInUp}
+         
               className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
             >
               Powerful Features for{" "}
               <span className="text-green-500">WhatsApp Automation</span>
             </motion.h2>
             <motion.p
-              variants={fadeInUp}
+
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
               MSGZONE provides comprehensive tools for businesses to automate
@@ -439,10 +435,7 @@ const Index = () => {
 
           {/* Tab Navigation */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
+         
             className="flex justify-center mb-12"
           >
             <div className="bg-gray-100 p-1 rounded-full">
@@ -672,25 +665,22 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
+             
               className="space-y-8"
             >
               <motion.h2
-                variants={fadeInUp}
+              
                 className="text-3xl lg:text-4xl font-bold text-gray-900"
               >
                 Why Choose <span className="text-green-500">MSGZONE</span>?
               </motion.h2>
 
-              <motion.p variants={fadeInUp} className="text-xl text-gray-600">
+              <motion.p className="text-xl text-gray-600">
                 Professional WhatsApp automation designed for businesses that
                 need reliable, scalable, and secure messaging solutions.
               </motion.p>
 
-              <motion.div variants={staggerContainer} className="space-y-6">
+              <motion.div  className="space-y-6">
                 {[
                   {
                     icon: Shield,
@@ -719,7 +709,7 @@ const Index = () => {
                 ].map((benefit, index) => (
                   <motion.div
                     key={benefit.title}
-                    variants={slideIn}
+                    
                     className="flex items-start space-x-4"
                   >
                     <div className="p-3 bg-green-100 rounded-xl">
@@ -737,10 +727,7 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+            
               className="relative"
             >
               <Card className="bg-white shadow-2xl overflow-hidden">
@@ -775,9 +762,7 @@ const Index = () => {
                     ].map((stat, index) => (
                       <motion.div
                         key={stat.label}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 }}
+                      
                         className="text-center"
                       >
                         <p
@@ -995,14 +980,11 @@ const Index = () => {
       >
         <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
+           
             className="max-w-4xl mx-auto space-y-8"
           >
             <motion.h2
-              variants={fadeInUp}
+             
               className="text-3xl lg:text-5xl font-bold text-white"
             >
               Ready to Automate Your{" "}
@@ -1010,7 +992,7 @@ const Index = () => {
             </motion.h2>
 
             <motion.p
-              variants={fadeInUp}
+            
               className="text-xl text-green-100 max-w-2xl mx-auto"
             >
               Create Account on MSGZONE now and start your free trial. No credit
@@ -1018,7 +1000,7 @@ const Index = () => {
             </motion.p>
 
             <motion.div
-              variants={fadeInUp}
+             
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
                <a href="https://whatsapp.web.webifyit.in/login">
@@ -1043,7 +1025,7 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              variants={fadeInUp}
+             
               className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12"
             >
               {[
@@ -1065,7 +1047,7 @@ const Index = () => {
               ].map((step, index) => (
                 <motion.div
                   key={step.title}
-                  variants={scaleIn}
+              
                   className="text-center"
                 >
                   <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -1086,13 +1068,10 @@ const Index = () => {
       <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
+           
             className="grid md:grid-cols-4 gap-8"
           >
-            <motion.div variants={fadeInUp} className="space-y-4">
+            <motion.div  className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
                   <MessageSquare className="h-5 w-5 text-white" />
@@ -1136,7 +1115,7 @@ const Index = () => {
             ].map((section, index) => (
               <motion.div
                 key={section.title}
-                variants={fadeInUp}
+               
                 className="space-y-4"
               >
                 <h3 className="text-lg font-semibold">{section.title}</h3>
@@ -1157,10 +1136,7 @@ const Index = () => {
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
+           
             className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
             <p className="text-gray-400 text-sm">
