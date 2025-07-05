@@ -34,6 +34,8 @@ import {
   Award,
   User,
   LogIn,
+  Phone,
+  Mail,
 } from "lucide-react";
 
 const Index = () => {
@@ -127,7 +129,7 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="hidden md:flex items-center space-x-3"
             >
-              <a href="https://whatsapp.web.webifyit.in/login">
+              <a href="https://m.msgzone.live/login">
                 <Button
                   variant="outline"
                   className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
@@ -136,7 +138,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://whatsapp.web.webifyit.in/register">
+              <a href="https://m.msgzone.live/register">
                 <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
                   <User className="h-4 w-4 mr-2" />
                   Register
@@ -169,13 +171,13 @@ const Index = () => {
                   ),
                 )}
                 <div className="flex flex-col space-y-2 pt-4">
-                  <a href="https://whatsapp.web.webifyit.in/login">
+                  <a href="https://m.msgzone.live/login">
                     <Button variant="outline" className="w-full rounded-full">
                       <LogIn className="h-4 w-4 mr-2" />
                       Login
                     </Button>
                   </a>
-                  <a href="https://whatsapp.web.webifyit.in/register">
+                  <a href="https://m.msgzone.live/register">
                     <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
                       <User className="h-4 w-4 mr-2" />
                       Register
@@ -251,7 +253,7 @@ const Index = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <a href="https://whatsapp.web.webifyit.in/">
+              <a href="https://m.msgzone.live/">
                 <Button
                   size="lg"
                   className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
@@ -916,7 +918,7 @@ const Index = () => {
             </motion.p>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="https://whatsapp.web.webifyit.in/login">
+              <a href="https://m.msgzone.live/login">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
@@ -925,7 +927,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://whatsapp.web.webifyit.in/register">
+              <a href="https://m.msgzone.live/register">
                 <Button
                   variant="outline"
                   size="lg"
@@ -971,7 +973,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <section className="bg-gray-900 text-white py-16" id="support">
         <div className="container mx-auto px-4">
           <motion.div className="grid md:grid-cols-4 gap-8">
             <motion.div className="space-y-4">
@@ -998,6 +1000,7 @@ const Index = () => {
               {
                 title: "Support",
                 links: [
+                  "footer",
                   "Help Center",
                   "Documentation",
                   "Contact Us",
@@ -1013,6 +1016,7 @@ const Index = () => {
                   "Terms of Service",
                   "Careers",
                   "Partners",
+          
                 ],
               },
             ].map((section, index) => (
@@ -1024,6 +1028,12 @@ const Index = () => {
                       <a
                         href="#"
                         className="text-gray-400 hover:text-white transition-colors"
+                        onClick={() => {
+                          const element = document.getElementById(link.toLowerCase());
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
                       >
                         {link}
                       </a>
@@ -1032,6 +1042,25 @@ const Index = () => {
                 </ul>
               </motion.div>
             ))}
+
+<div className="flex flex-col space-y-3">
+  <div className="flex items-center space-x-2">
+    <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
+      <Mail className="h-4 w-4 text-gray-300" />
+    </div>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=webifyit.in@gmail.com&su=Support" className="text-gray-300 hover:text-green-400 transition-colors">
+      webifyit.in@gmail.com
+    </a>
+  </div>
+  <div className="flex items-center space-x-2">
+    <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
+      <Phone className="h-4 w-4 text-gray-300" />
+    </div>
+    <a href="tel:+916394575814" className="text-gray-300 hover:text-green-400 transition-colors">
+      +91 639-457-5814
+    </a>
+  </div>
+</div>
           </motion.div>
 
           <motion.div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -1048,7 +1077,7 @@ const Index = () => {
             </div>
           </motion.div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 };
