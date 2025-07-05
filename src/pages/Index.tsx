@@ -83,10 +83,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
       {/* Header */}
-      <motion.header
-       
-        className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100 shadow-sm"
-      >
+      <motion.header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -114,7 +111,6 @@ const Index = () => {
                   <motion.a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                   
                     whileHover={{ y: -2 }}
                     className="text-gray-600 hover:text-green-600 transition-colors font-medium"
                   >
@@ -159,10 +155,7 @@ const Index = () => {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <motion.div
-              
-              className="md:hidden mt-4 pb-4 border-t border-gray-100"
-            >
+            <motion.div className="md:hidden mt-4 pb-4 border-t border-gray-100">
               <nav className="flex flex-col space-y-3 pt-4">
                 {["Features", "Pricing", "Demo", "Support", "About"].map(
                   (item) => (
@@ -349,62 +342,6 @@ const Index = () => {
               </motion.div>
 
               {/* Main dashboard card */}
-              <Card className="bg-white/95 backdrop-blur-sm border-green-100 shadow-2xl overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle className="text-white flex items-center">
-                        <MessageSquare className="h-5 w-5 mr-2" />
-                        MSGZONE Dashboard
-                      </CardTitle>
-                      <p className="text-green-100 text-sm">
-                        WhatsApp Automation Control
-                      </p>
-                    </div>
-                    <Badge className="bg-white/20 text-white">Live</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {/* Mini dashboard content */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <Users className="h-6 w-6 text-green-600 mx-auto mb-1" />
-                      <p className="text-2xl font-bold text-gray-900">50</p>
-                      <p className="text-sm text-gray-600">Active Users</p>
-                    </div>
-                    <div className="text-center p-3 bg-blue-50 rounded-lg">
-                      <MessageSquare className="h-6 w-6 text-blue-600 mx-auto mb-1" />
-                      <p className="text-2xl font-bold text-gray-900">3.2K</p>
-                      <p className="text-sm text-gray-600">Messages Today</p>
-                    </div>
-                  </div>
-
-                  {/* Chart representation */}
-                  <div className="h-32 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg flex items-end justify-around p-4">
-                    {[60, 85, 45, 90, 75, 95, 80].map((height, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ height: 0 }}
-                        animate={{ height: `${height}%` }}
-                        transition={{ delay: index * 0.1 + 1.5, duration: 0.6 }}
-                        className="bg-gradient-to-t from-green-500 to-green-400 rounded-t w-6"
-                      />
-                    ))}
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm text-gray-600">
-                        Real-time sync
-                      </span>
-                    </div>
-                    <span className="text-sm text-green-600 font-medium">
-                      All systems operational
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </motion.div>
         </div>
@@ -413,20 +350,12 @@ const Index = () => {
       {/* Features Overview */}
       <section id="features" className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-          >
-            <motion.h2
-         
-              className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
-            >
+          <motion.div className="text-center mb-16">
+            <motion.h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
               Powerful Features for{" "}
               <span className="text-green-500">WhatsApp Automation</span>
             </motion.h2>
-            <motion.p
-
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-            >
+            <motion.p className="text-xl text-gray-600 max-w-3xl mx-auto">
               MSGZONE provides comprehensive tools for businesses to automate
               WhatsApp marketing, manage customers, and scale their
               communication efficiently.
@@ -434,10 +363,7 @@ const Index = () => {
           </motion.div>
 
           {/* Tab Navigation */}
-          <motion.div
-         
-            className="flex justify-center mb-12"
-          >
+          <motion.div className="flex justify-center mb-12">
             <div className="bg-gray-100 p-1 rounded-full">
               <div className="flex">
                 <button
@@ -664,14 +590,8 @@ const Index = () => {
       <section className="py-16 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-             
-              className="space-y-8"
-            >
-              <motion.h2
-              
-                className="text-3xl lg:text-4xl font-bold text-gray-900"
-              >
+            <motion.div className="space-y-8">
+              <motion.h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                 Why Choose <span className="text-green-500">MSGZONE</span>?
               </motion.h2>
 
@@ -680,7 +600,7 @@ const Index = () => {
                 need reliable, scalable, and secure messaging solutions.
               </motion.p>
 
-              <motion.div  className="space-y-6">
+              <motion.div className="space-y-6">
                 {[
                   {
                     icon: Shield,
@@ -709,7 +629,6 @@ const Index = () => {
                 ].map((benefit, index) => (
                   <motion.div
                     key={benefit.title}
-                    
                     className="flex items-start space-x-4"
                   >
                     <div className="p-3 bg-green-100 rounded-xl">
@@ -726,10 +645,7 @@ const Index = () => {
               </motion.div>
             </motion.div>
 
-            <motion.div
-            
-              className="relative"
-            >
+            <motion.div className="relative">
               <Card className="bg-white shadow-2xl overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-8">
                   <div className="flex items-center justify-between">
@@ -760,11 +676,7 @@ const Index = () => {
                       },
                       { label: "Uptime", value: "99.9%", color: "orange" },
                     ].map((stat, index) => (
-                      <motion.div
-                        key={stat.label}
-                      
-                        className="text-center"
-                      >
+                      <motion.div key={stat.label} className="text-center">
                         <p
                           className={`text-3xl font-bold text-${stat.color}-600 mb-1`}
                         >
@@ -801,7 +713,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      {/* <section id="pricing" className="py-16 bg-white">
+      <section id="pricing" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -839,49 +751,62 @@ const Index = () => {
                 period: "trial",
                 description: "Perfect for testing and small businesses",
                 features: [
-                  "100 messages/day",
+                  "100 messages",
                   "1 WhatsApp number",
                   "Basic templates",
                   "Email support",
                   "7-day trial",
+                  "Bulk Messaging",
+                  "Message Scheduling",
+                  "Anti-Block System",
+                  "API Integration",
                 ],
                 popular: false,
                 cta: "Start Free Trial",
               },
               {
-                name: "Professional",
-                price: "$49",
+                name: "PREMIUM",
+                price: "₹399",
+                period: "month",
+                description: " For large organizations",
+               
+                features: [
+                "Unlimited messages",
+                  "5 WhatsApp number",
+                  "Unlimited templates",
+                  "Email support",
+                  "30 days",
+                  "Bulk Messaging",
+                  "Message Scheduling",
+                  "Media Attachments ",
+                  "Anti-Block System",
+                  "AI Template Generator",
+                  "WhatsApp Marketing Tools",
+                  "API Integration",
+                ],
+                popular: true,
+                cta: "Get PREMIUM",
+              },
+              {
+                name: "CLASSIC",
+                price: "₹149",
                 period: "month",
                 description: "Ideal for growing businesses",
                 features: [
-                  "10,000 messages/day",
-                  "5 WhatsApp numbers",
-                  "Advanced templates",
-                  "Priority support",
-                  "Analytics dashboard",
-                  "Bulk import",
-                  "Scheduling",
-                ],
-                popular: true,
-                cta: "Get Professional",
-              },
-              {
-                name: "Enterprise",
-                price: "$149",
-                period: "month",
-                description: "For large organizations",
-                features: [
-                  "Unlimited messages",
-                  "Unlimited numbers",
-                  "Custom templates",
-                  "24/7 phone support",
-                  "Advanced analytics",
-                  "API access",
-                  "Multi-user management",
-                  "Custom integrations",
+                "10000 messages",
+                  "5 WhatsApp number",
+                  "Email support",
+                  "30 days",
+                  "Bulk Messaging",
+                  "Message Scheduling",
+                  "Media Attachments ",
+                  "Anti-Block System",
+                  "AI Template Generator",
+                  "WhatsApp Marketing Tools",
+                  "API Integration",
                 ],
                 popular: false,
-                cta: "Contact Sales",
+                cta: "GET CLASSIC",
               },
             ].map((plan, index) => (
               <motion.div
@@ -971,7 +896,7 @@ const Index = () => {
             </div>
           </motion.div>
         </div>
-      </section> */}
+      </section>
 
       {/* Download CTA Section */}
       <section
@@ -979,55 +904,40 @@ const Index = () => {
         className="py-16 bg-gradient-to-r from-green-500 to-emerald-600"
       >
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-           
-            className="max-w-4xl mx-auto space-y-8"
-          >
-            <motion.h2
-             
-              className="text-3xl lg:text-5xl font-bold text-white"
-            >
+          <motion.div className="max-w-4xl mx-auto space-y-8">
+            <motion.h2 className="text-3xl lg:text-5xl font-bold text-white">
               Ready to Automate Your{" "}
               <span className="text-green-200">WhatsApp Marketing</span>?
             </motion.h2>
 
-            <motion.p
-            
-              className="text-xl text-green-100 max-w-2xl mx-auto"
-            >
+            <motion.p className="text-xl text-green-100 max-w-2xl mx-auto">
               Create Account on MSGZONE now and start your free trial. No credit
               card required, setup takes less than 5 minutes.
             </motion.p>
 
-            <motion.div
-             
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-               <a href="https://whatsapp.web.webifyit.in/login">
-              <Button
-                size="lg"
-                className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
-              >
-                <LogIn className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Login
-              </Button>
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="https://whatsapp.web.webifyit.in/login">
+                <Button
+                  size="lg"
+                  className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
+                >
+                  <LogIn className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                  Login
+                </Button>
               </a>
               <a href="https://whatsapp.web.webifyit.in/register">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white  hover:bg-white text-green-600 rounded-full px-8"
-              >
-                <User className="mr-2 h-4 w-4" />
-                Register
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white  hover:bg-white text-green-600 rounded-full px-8"
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  Register
+                </Button>
               </a>
             </motion.div>
 
-            <motion.div
-             
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12"
-            >
+            <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
               {[
                 {
                   icon: Play,
@@ -1045,11 +955,7 @@ const Index = () => {
                   description: "Begin your automation journey",
                 },
               ].map((step, index) => (
-                <motion.div
-                  key={step.title}
-              
-                  className="text-center"
-                >
+                <motion.div key={step.title} className="text-center">
                   <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <step.icon className="h-8 w-8 text-white" />
                   </div>
@@ -1067,11 +973,8 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
-          <motion.div
-           
-            className="grid md:grid-cols-4 gap-8"
-          >
-            <motion.div  className="space-y-4">
+          <motion.div className="grid md:grid-cols-4 gap-8">
+            <motion.div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
                   <MessageSquare className="h-5 w-5 text-white" />
@@ -1113,11 +1016,7 @@ const Index = () => {
                 ],
               },
             ].map((section, index) => (
-              <motion.div
-                key={section.title}
-               
-                className="space-y-4"
-              >
+              <motion.div key={section.title} className="space-y-4">
                 <h3 className="text-lg font-semibold">{section.title}</h3>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
@@ -1135,10 +1034,7 @@ const Index = () => {
             ))}
           </motion.div>
 
-          <motion.div
-           
-            className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
-          >
+          <motion.div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
               © 2025 MSGZONE. All rights reserved. Version 1.0
             </p>
