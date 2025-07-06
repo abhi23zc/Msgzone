@@ -771,9 +771,9 @@ const Index = () => {
                 price: "₹399",
                 period: "month",
                 description: " For large organizations",
-               
+
                 features: [
-                "Unlimited messages",
+                  "Unlimited messages",
                   "5 WhatsApp number",
                   "Unlimited templates",
                   "Email support",
@@ -795,8 +795,8 @@ const Index = () => {
                 period: "month",
                 description: "Ideal for growing businesses",
                 features: [
-                "10000 messages",
-                  "5 WhatsApp number",
+                  "10000 messages",
+                  "2 WhatsApp number",
                   "Email support",
                   "30 days",
                   "Bulk Messaging",
@@ -856,15 +856,17 @@ const Index = () => {
                       ))}
                     </ul>
 
-                    <Button
-                      className={`w-full rounded-full ${
-                        plan.popular
-                          ? "bg-green-500 hover:bg-green-600 text-white"
-                          : "bg-gray-100 hover:bg-green-50 text-gray-900 hover:text-green-700"
-                      }`}
-                    >
-                      {plan.cta}
-                    </Button>
+                    <a href="https://m.msgzone.live">
+                      <Button
+                        className={`w-full rounded-full ${
+                          plan.popular
+                            ? "bg-green-500 hover:bg-green-600 text-white"
+                            : "bg-gray-100 hover:bg-green-50 text-gray-900 hover:text-green-700"
+                        }`}
+                      >
+                        {plan.cta}
+                      </Button>
+                    </a>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -1000,7 +1002,6 @@ const Index = () => {
               {
                 title: "Support",
                 links: [
-                  "footer",
                   "Help Center",
                   "Documentation",
                   "Contact Us",
@@ -1016,7 +1017,6 @@ const Index = () => {
                   "Terms of Service",
                   "Careers",
                   "Partners",
-          
                 ],
               },
             ].map((section, index) => (
@@ -1029,9 +1029,11 @@ const Index = () => {
                         href="#"
                         className="text-gray-400 hover:text-white transition-colors"
                         onClick={() => {
-                          const element = document.getElementById(link.toLowerCase());
+                          const element = document.getElementById(
+                            link.toLowerCase(),
+                          );
                           if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' });
+                            element.scrollIntoView({ behavior: "smooth" });
                           }
                         }}
                       >
@@ -1043,24 +1045,30 @@ const Index = () => {
               </motion.div>
             ))}
 
-<div className="flex flex-col space-y-3">
-  <div className="flex items-center space-x-2">
-    <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
-      <Mail className="h-4 w-4 text-gray-300" />
-    </div>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=webifyit.in@gmail.com&su=Support" className="text-gray-300 hover:text-green-400 transition-colors">
-      webifyit.in@gmail.com
-    </a>
-  </div>
-  <div className="flex items-center space-x-2">
-    <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
-      <Phone className="h-4 w-4 text-gray-300" />
-    </div>
-    <a href="tel:+916394575814" className="text-gray-300 hover:text-green-400 transition-colors">
-      +91 639-457-5814
-    </a>
-  </div>
-</div>
+            <div className="flex flex-col space-y-3">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
+                  <Mail className="h-4 w-4 text-gray-300" />
+                </div>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=webifyit.in@gmail.com&su=Support"
+                  className="text-gray-300 hover:text-green-400 transition-colors"
+                >
+                  webifyit.in@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gray-800 bg-opacity-30 rounded-full flex items-center justify-center">
+                  <Phone className="h-4 w-4 text-gray-300" />
+                </div>
+                <a
+                  href="tel:+916394575814"
+                  className="text-gray-300 hover:text-green-400 transition-colors"
+                >
+                  +91 639-457-5814
+                </a>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
