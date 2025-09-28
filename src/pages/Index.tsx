@@ -129,7 +129,7 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="hidden md:flex items-center space-x-3"
             >
-              <a href="https://m.msgzone.live/login">
+              <a href="https://wp.webifyit.in/login">
                 <Button
                   variant="outline"
                   className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
@@ -138,7 +138,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://m.msgzone.live/register">
+              <a href="https://wp.webifyit.in/register">
                 <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
                   <User className="h-4 w-4 mr-2" />
                   Register
@@ -171,13 +171,13 @@ const Index = () => {
                   ),
                 )}
                 <div className="flex flex-col space-y-2 pt-4">
-                  <a href="https://m.msgzone.live/login">
+                  <a href="https://wp.webifyit.in/login">
                     <Button variant="outline" className="w-full rounded-full">
                       <LogIn className="h-4 w-4 mr-2" />
                       Login
                     </Button>
                   </a>
-                  <a href="https://m.msgzone.live/register">
+                  <a href="https://wp.webifyit.in/register">
                     <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
                       <User className="h-4 w-4 mr-2" />
                       Register
@@ -253,7 +253,7 @@ const Index = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <a href="https://m.msgzone.live/">
+              <a href="https://wp.webifyit.in/">
                 <Button
                   size="lg"
                   className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
@@ -920,7 +920,7 @@ const Index = () => {
             </motion.p>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="https://m.msgzone.live/login">
+              <a href="https://wp.webifyit.in/login">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
@@ -929,7 +929,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://m.msgzone.live/register">
+              <a href="https://wp.webifyit.in/register">
                 <Button
                   variant="outline"
                   size="lg"
