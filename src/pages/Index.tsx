@@ -129,7 +129,7 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="hidden md:flex items-center space-x-3"
             >
-              <a href="https://wp.webifyit.in/login">
+              <a href="https://m.msgzone.live/login">
                 <Button
                   variant="outline"
                   className="rounded-full border-green-200 text-green-700 hover:bg-green-50"
@@ -138,7 +138,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://wp.webifyit.in/register">
+              <a href="https://m.msgzone.live/register">
                 <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full px-6 shadow-lg">
                   <User className="h-4 w-4 mr-2" />
                   Register
@@ -171,13 +171,13 @@ const Index = () => {
                   ),
                 )}
                 <div className="flex flex-col space-y-2 pt-4">
-                  <a href="https://wp.webifyit.in/login">
+                  <a href="https://m.msgzone.live/login">
                     <Button variant="outline" className="w-full rounded-full">
                       <LogIn className="h-4 w-4 mr-2" />
                       Login
                     </Button>
                   </a>
-                  <a href="https://wp.webifyit.in/register">
+                  <a href="https://m.msgzone.live/register">
                     <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full w-full">
                       <User className="h-4 w-4 mr-2" />
                       Register
@@ -253,7 +253,7 @@ const Index = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <a href="https://wp.webifyit.in/">
+              <a href="https://m.msgzone.live/">
                 <Button
                   size="lg"
                   className="bg-green-500 hover:bg-green-600 text-white rounded-full px-8 shadow-lg group"
@@ -370,21 +370,19 @@ const Index = () => {
               <div className="flex">
                 <button
                   onClick={() => setActiveTab("admin")}
-                  className={`px-8 py-3 rounded-full font-medium transition-all ${
-                    activeTab === "admin"
+                  className={`px-8 py-3 rounded-full font-medium transition-all ${activeTab === "admin"
                       ? "bg-white shadow-md text-green-600"
                       : "text-gray-600 hover:text-green-600"
-                  }`}
+                    }`}
                 >
                   Admin Panel
                 </button>
                 <button
                   onClick={() => setActiveTab("user")}
-                  className={`px-8 py-3 rounded-full font-medium transition-all ${
-                    activeTab === "user"
+                  className={`px-8 py-3 rounded-full font-medium transition-all ${activeTab === "user"
                       ? "bg-white shadow-md text-green-600"
                       : "text-gray-600 hover:text-green-600"
-                  }`}
+                    }`}
                 >
                   User Panel
                 </button>
@@ -402,153 +400,153 @@ const Index = () => {
           >
             {(activeTab === "admin"
               ? [
-                  {
-                    icon: BarChart3,
-                    title: "Advanced Dashboard",
-                    description:
-                      "Monitor WhatsApp connections, view user activity, track messages sent and payments with beautiful analytics.",
-                    color: "green",
-                    features: [
-                      "Real-time monitoring",
-                      "Activity overview (7 days)",
-                      "Graphical reports",
-                    ],
-                  },
-                  {
-                    icon: Users,
-                    title: "User Management",
-                    description:
-                      "Complete user control with detailed profiles, status tracking, and administrative actions.",
-                    color: "blue",
-                    features: [
-                      "Add/edit users",
-                      "Active/inactive filtering",
-                      "User status management",
-                    ],
-                  },
-                  {
-                    icon: FileText,
-                    title: "Comprehensive Reports",
-                    description:
-                      "Detailed reporting for message delivery, scheduled messages, and plan sales with export options.",
-                    color: "purple",
-                    features: [
-                      "Delivery reports",
-                      "Scheduled message tracking",
-                      "Sales analytics",
-                    ],
-                  },
-                  {
-                    icon: Settings,
-                    title: "Plan Management",
-                    description:
-                      "Create and modify subscription plans with flexible pricing models and multi-device support.",
-                    color: "orange",
-                    features: [
-                      "Day-wise plans",
-                      "Message count limits",
-                      "Multi-device options",
-                    ],
-                  },
-                  {
-                    icon: CreditCard,
-                    title: "Payment Integration",
-                    description:
-                      "Seamless payment gateway integration for processing user subscriptions and plan purchases.",
-                    color: "indigo",
-                    features: [
-                      "Multiple gateways",
-                      "Automatic billing",
-                      "Payment tracking",
-                    ],
-                  },
-                  {
-                    icon: Send,
-                    title: "Promotional Tools",
-                    description:
-                      "Send promotional campaigns to bulk WhatsApp numbers with attachments and scheduling.",
-                    color: "pink",
-                    features: [
-                      "Bulk messaging",
-                      "File attachments",
-                      "Message scheduling",
-                    ],
-                  },
-                ]
+                {
+                  icon: BarChart3,
+                  title: "Advanced Dashboard",
+                  description:
+                    "Monitor WhatsApp connections, view user activity, track messages sent and payments with beautiful analytics.",
+                  color: "green",
+                  features: [
+                    "Real-time monitoring",
+                    "Activity overview (7 days)",
+                    "Graphical reports",
+                  ],
+                },
+                {
+                  icon: Users,
+                  title: "User Management",
+                  description:
+                    "Complete user control with detailed profiles, status tracking, and administrative actions.",
+                  color: "blue",
+                  features: [
+                    "Add/edit users",
+                    "Active/inactive filtering",
+                    "User status management",
+                  ],
+                },
+                {
+                  icon: FileText,
+                  title: "Comprehensive Reports",
+                  description:
+                    "Detailed reporting for message delivery, scheduled messages, and plan sales with export options.",
+                  color: "purple",
+                  features: [
+                    "Delivery reports",
+                    "Scheduled message tracking",
+                    "Sales analytics",
+                  ],
+                },
+                {
+                  icon: Settings,
+                  title: "Plan Management",
+                  description:
+                    "Create and modify subscription plans with flexible pricing models and multi-device support.",
+                  color: "orange",
+                  features: [
+                    "Day-wise plans",
+                    "Message count limits",
+                    "Multi-device options",
+                  ],
+                },
+                {
+                  icon: CreditCard,
+                  title: "Payment Integration",
+                  description:
+                    "Seamless payment gateway integration for processing user subscriptions and plan purchases.",
+                  color: "indigo",
+                  features: [
+                    "Multiple gateways",
+                    "Automatic billing",
+                    "Payment tracking",
+                  ],
+                },
+                {
+                  icon: Send,
+                  title: "Promotional Tools",
+                  description:
+                    "Send promotional campaigns to bulk WhatsApp numbers with attachments and scheduling.",
+                  color: "pink",
+                  features: [
+                    "Bulk messaging",
+                    "File attachments",
+                    "Message scheduling",
+                  ],
+                },
+              ]
               : [
-                  {
-                    icon: QrCode,
-                    title: "Easy Login System",
-                    description:
-                      "Quick login via QR code scanning or registered WhatsApp number for seamless access.",
-                    color: "green",
-                    features: [
-                      "QR code login",
-                      "Number verification",
-                      "Secure authentication",
-                    ],
-                  },
-                  {
-                    icon: MessageSquare,
-                    title: "Bulk Messaging",
-                    description:
-                      "Send messages to thousands of customers with Excel import, media attachments, and templates.",
-                    color: "blue",
-                    features: [
-                      "Excel import",
-                      "Media attachments",
-                      "Message templates",
-                    ],
-                  },
-                  {
-                    icon: BarChart3,
-                    title: "Message Reports",
-                    description:
-                      "Track message status with detailed reports, filters, and export options in Excel/PDF format.",
-                    color: "purple",
-                    features: [
-                      "Status tracking",
-                      "Date filters",
-                      "Export reports",
-                    ],
-                  },
-                  {
-                    icon: Calendar,
-                    title: "Smart Scheduling",
-                    description:
-                      "Schedule messages for optimal delivery times and manage your communication timeline.",
-                    color: "orange",
-                    features: [
-                      "Time scheduling",
-                      "Batch processing",
-                      "Delivery optimization",
-                    ],
-                  },
-                  {
-                    icon: Globe,
-                    title: "Developer API",
-                    description:
-                      "Generate API keys for external integrations and access WhatsApp API parameters.",
-                    color: "indigo",
-                    features: [
-                      "API key generation",
-                      "External integration",
-                      "Custom development",
-                    ],
-                  },
-                  {
-                    icon: Target,
-                    title: "Template Management",
-                    description:
-                      "Access admin-approved message templates and create effective marketing campaigns.",
-                    color: "pink",
-                    features: [
-                      "Pre-approved templates",
-                      "Campaign management",
-                      "Custom templates",
-                    ],
-                  },
-                ]
+                {
+                  icon: QrCode,
+                  title: "Easy Login System",
+                  description:
+                    "Quick login via QR code scanning or registered WhatsApp number for seamless access.",
+                  color: "green",
+                  features: [
+                    "QR code login",
+                    "Number verification",
+                    "Secure authentication",
+                  ],
+                },
+                {
+                  icon: MessageSquare,
+                  title: "Bulk Messaging",
+                  description:
+                    "Send messages to thousands of customers with Excel import, media attachments, and templates.",
+                  color: "blue",
+                  features: [
+                    "Excel import",
+                    "Media attachments",
+                    "Message templates",
+                  ],
+                },
+                {
+                  icon: BarChart3,
+                  title: "Message Reports",
+                  description:
+                    "Track message status with detailed reports, filters, and export options in Excel/PDF format.",
+                  color: "purple",
+                  features: [
+                    "Status tracking",
+                    "Date filters",
+                    "Export reports",
+                  ],
+                },
+                {
+                  icon: Calendar,
+                  title: "Smart Scheduling",
+                  description:
+                    "Schedule messages for optimal delivery times and manage your communication timeline.",
+                  color: "orange",
+                  features: [
+                    "Time scheduling",
+                    "Batch processing",
+                    "Delivery optimization",
+                  ],
+                },
+                {
+                  icon: Globe,
+                  title: "Developer API",
+                  description:
+                    "Generate API keys for external integrations and access WhatsApp API parameters.",
+                  color: "indigo",
+                  features: [
+                    "API key generation",
+                    "External integration",
+                    "Custom development",
+                  ],
+                },
+                {
+                  icon: Target,
+                  title: "Template Management",
+                  description:
+                    "Access admin-approved message templates and create effective marketing campaigns.",
+                  color: "pink",
+                  features: [
+                    "Pre-approved templates",
+                    "Campaign management",
+                    "Custom templates",
+                  ],
+                },
+              ]
             ).map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -714,194 +712,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-            >
-              Choose Your <span className="text-green-500">Plan</span>
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
-            >
-              Flexible pricing plans designed for businesses of all sizes. Start
-              with our free trial and scale as you grow.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-          >
-            {[
-              {
-                name: "Starter",
-                price: "Free",
-                period: "trial",
-                description: "Perfect for testing and small businesses",
-                features: [
-                  "100 messages",
-                  "1 WhatsApp number",
-                  "Basic templates",
-                  "Email support",
-                  "7-day trial",
-                  "Bulk Messaging",
-                  "Message Scheduling",
-                  "Anti-Block System",
-                  "API Integration",
-                ],
-                popular: false,
-                cta: "Start Free Trial",
-              },
-              {
-                name: "PREMIUM",
-                price: "₹399",
-                period: "month",
-                description: " For large organizations",
-
-                features: [
-                  "Unlimited messages",
-                  "5 WhatsApp number",
-                  "Unlimited templates",
-                  "Email support",
-                  "30 days",
-                  "Bulk Messaging",
-                  "Message Scheduling",
-                  "Media Attachments ",
-                  "Anti-Block System",
-                  "AI Template Generator",
-                  "WhatsApp Marketing Tools",
-                  "API Integration",
-                ],
-                popular: true,
-                cta: "Get PREMIUM",
-              },
-              {
-                name: "CLASSIC",
-                price: "₹149",
-                period: "month",
-                description: "Ideal for growing businesses",
-                features: [
-                  "10000 messages",
-                  "2 WhatsApp number",
-                  "Email support",
-                  "30 days",
-                  "Bulk Messaging",
-                  "Message Scheduling",
-                  "Media Attachments ",
-                  "Anti-Block System",
-                  "AI Template Generator",
-                  "WhatsApp Marketing Tools",
-                  "API Integration",
-                ],
-                popular: false,
-                cta: "GET CLASSIC",
-              },
-            ].map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="relative"
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-green-500 text-white px-4 py-1">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
-
-                <Card
-                  className={`h-full text-center ${
-                    plan.popular
-                      ? "border-green-200 shadow-xl ring-2 ring-green-500 ring-opacity-20"
-                      : "border-gray-200 hover:border-green-200"
-                  } transition-all duration-300`}
-                >
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {plan.name}
-                    </h3>
-                    <p className="text-gray-600 mb-6">{plan.description}</p>
-
-                    <div className="mb-8">
-                      <span className="text-4xl font-bold text-gray-900">
-                        {plan.price}
-                      </span>
-                      {plan.period && (
-                        <span className="text-gray-500">/{plan.period}</span>
-                      )}
-                    </div>
-
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <a href="https://m.msgzone.live">
-                      <Button
-                        className={`w-full rounded-full ${
-                          plan.popular
-                            ? "bg-green-500 hover:bg-green-600 text-white"
-                            : "bg-gray-100 hover:bg-green-50 text-gray-900 hover:text-green-700"
-                        }`}
-                      >
-                        {plan.cta}
-                      </Button>
-                    </a>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="text-center mt-12"
-          >
-            <p className="text-gray-600 mb-4">
-              All plans include free updates, security patches, and basic
-              support
-            </p>
-            <div className="flex justify-center items-center space-x-8 text-sm text-gray-500">
-              <div className="flex items-center">
-                <Shield className="h-4 w-4 mr-1" />
-                30-day money back
-              </div>
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1" />
-                Cancel anytime
-              </div>
-              <div className="flex items-center">
-                <Award className="h-4 w-4 mr-1" />
-                No setup fees
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+    
       {/* Download CTA Section */}
       <section
         id="download"
@@ -920,7 +731,7 @@ const Index = () => {
             </motion.p>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="https://wp.webifyit.in/login">
+              <a href="https://m.msgzone.live/login">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-50 rounded-full px-8 shadow-lg group"
@@ -929,7 +740,7 @@ const Index = () => {
                   Login
                 </Button>
               </a>
-              <a href="https://wp.webifyit.in/register">
+              <a href="https://m.msgzone.live/register">
                 <Button
                   variant="outline"
                   size="lg"
